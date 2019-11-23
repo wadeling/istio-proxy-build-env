@@ -31,9 +31,9 @@ echo 'export PATH=$PATH:/usr/local/go/bin' >> ~/.bashrc  && \
 echo 'export PATH=$PATH:/root/go/bin' >> ~/.bashrc  && \
 echo 'export GOPATH=$HOME/go' >> ~/.bashrc  && \
 # go relative
-go get -u github.com/bazelbuild/buildtools/buildifier && \
+/usr/local/go/bin/go get -u github.com/bazelbuild/buildtools/buildifier && \
 echo 'export BUILDIFIER_BIN=$GOPATH/bin/buildifier' >> ~/.bashrc  && \
-go get -u github.com/bazelbuild/buildtools/buildozer && \
+/usr/local/go/bin/go get -u github.com/bazelbuild/buildtools/buildozer && \
 echo 'export BUILDOZER_BIN=$GOPATH/bin/buildozer' >> ~/.bashrc  && \
 #docker-ce
 apt-get install -y \
