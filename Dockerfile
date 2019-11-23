@@ -12,34 +12,29 @@ git \
 make \
 cmake \
 automake \
+autoconf \
 libtool \
+virtualenv \
+python \
 vim \
+g++ \
 wget \
 ninja-build \
 curl &&\
-#chose appropriate for istio.io/proxy otherwise build will fail
-curl -LO https://github.com/bazelbuild/bazel/releases/download/0.28.1/bazel-0.28.1-installer-linux-x86_64.sh && \
-chmod +x bazel-0.28.1-installer-linux-x86_64.sh && \
-./bazel-0.28.1-installer-linux-x86_64.sh --user && \
-echo 'export PATH="$PATH:$HOME/bin"' >> ~/.bashrc && \
-#clang-8
-echo 'deb http://apt.llvm.org/bionic/ llvm-toolchain-bionic-8 main\n \
-deb-src http://apt.llvm.org/bionic/ llvm-toolchain-bionic-8 main\n' \
->> /etc/apt/sources.list && \
-wget -O - https://apt.llvm.org/llvm-snapshot.gpg.key|apt-key add - && \
-apt-get update && apt-get install -y clang-8 lldb-8 lld-8 && \
-apt-get install -y libc++-8-dev libc++abi-8-dev && \
-#add clang env
-echo 'export PATH=/usr/lib/llvm-8/bin:$PATH' >> ~/.bashrc && \
-echo 'export CC=clang' >> ~/.bashrc && \
-echo 'export CXX=clang++' >> ~/.bashrc && \
-echo 'export CPLUS_INCLUDE_PATH=$CPLUS_INCLUDE_PATH:/usr/lib/llvm-8/include/c++/v1' >> ~/.bashrc && \
-echo 'export C_INCLUDE_PATH=$C_INCLUDE_PATH:/usr/lib/llvm-8/include/c++/v1' >> ~/.bashrc && \
+#use bazelisk to avoid bazel compatibility issue
+wget -O /usr/local/bin/bazel https://github.com/bazelbuild/bazelisk/releases/download/v0.0.8/bazelisk-linux-amd64 && \
+chmod +x /usr/local/bin/bazel && \
 #golang
 curl -LO https://dl.google.com/go/go1.12.5.linux-amd64.tar.gz && \
 tar -C /usr/local -xzf go1.12.5.linux-amd64.tar.gz && \
 echo 'export PATH=$PATH:/usr/local/go/bin' >> ~/.bashrc  && \
 echo 'export PATH=$PATH:/root/go/bin' >> ~/.bashrc  && \
+echo 'export GOPATH=$HOME/go' >> ~/.bashrc  && \
+# go relative
+go get -u github.com/bazelbuild/buildtools/buildifier && \
+echo 'export BUILDIFIER_BIN=$GOPATH/bin/buildifier' >> ~/.bashrc  && \
+go get -u github.com/bazelbuild/buildtools/buildozer && \
+echo 'export BUILDOZER_BIN=$GOPATH/bin/buildozer' >> ~/.bashrc  && \
 #docker-ce
 apt-get install -y \
 apt-transport-https \
