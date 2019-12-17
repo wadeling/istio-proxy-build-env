@@ -20,10 +20,16 @@ vim \
 g++ \
 wget \
 ninja-build \
-curl &&\
+curl \
+lsb-core \
+software-properties-common \
+#libc++
+libc++1 libc++-dev libc++abi-dev && \
 #use bazelisk to avoid bazel compatibility issue
 wget -O /usr/local/bin/bazel https://github.com/bazelbuild/bazelisk/releases/download/v0.0.8/bazelisk-linux-amd64 && \
 chmod +x /usr/local/bin/bazel && \
+#clang+llvm
+bash -c "$(wget -O - https://apt.llvm.org/llvm.sh)" && \
 #golang
 curl -LO https://dl.google.com/go/go1.13.5.linux-amd64.tar.gz && \
 tar -C /usr/local -xzf go1.13.5.linux-amd64.tar.gz && \

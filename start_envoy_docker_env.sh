@@ -3,7 +3,7 @@
 docker_name=envoy_env
 mount_opt="-v /root/go:/root/go"
 docker_opt="-v /var/run/docker.sock:/var/run/docker.sock"
-tag=proxy-1.3.5
+tag=proxy-1.4.2
 num=`docker ps -a | grep ${docker_name} | wc -l `
 echo "$docker_name num:$num"
 if [ $num -eq 0 ];then
