@@ -25,8 +25,8 @@ curl &&\
 wget -O /usr/local/bin/bazel https://github.com/bazelbuild/bazelisk/releases/download/v0.0.8/bazelisk-linux-amd64 && \
 chmod +x /usr/local/bin/bazel && \
 #golang
-curl -LO https://dl.google.com/go/go1.12.5.linux-amd64.tar.gz && \
-tar -C /usr/local -xzf go1.12.5.linux-amd64.tar.gz && \
+curl -LO https://dl.google.com/go/go1.13.5.linux-amd64.tar.gz && \
+tar -C /usr/local -xzf go1.13.5.linux-amd64.tar.gz && \
 echo 'export PATH=$PATH:/usr/local/go/bin' >> ~/.bashrc  && \
 echo 'export PATH=$PATH:/root/go/bin' >> ~/.bashrc  && \
 echo 'export GOPATH=$HOME/go' >> ~/.bashrc  && \
