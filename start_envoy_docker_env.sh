@@ -5,7 +5,7 @@ docker_name=envoy_env
 mount_opt="-v /root/go:/root/go"
 docker_opt="-v /var/run/docker.sock:/var/run/docker.sock"
 
-tag=proxy-1.4.x
+tag=proxy-1.5.x
 imagename=wade23/istio-proxy-build-env
 
 #official
